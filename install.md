@@ -1,5 +1,7 @@
 https://tomcat.apache.org/download-90.cgi
 
+https://medium.com/@nicholas.omorogbe/how-to-integrate-tomcat-server-in-cicd-pipeline-4401c804c79f
+
 Step 1: Download Tomcat 
 ===========================
 wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz
