@@ -1,0 +1,32 @@
+node {
+    try {
+        stage('Checkout') {
+            bat "xcopy /E PATH_TO_YOURPROJECT /Y"
+        }
+        stage ('Package Stage') {
+            bat './mvnw package'
+        }
+        stage('Test & Jacoco Static Analysis') {
+            junit 'target/surefire-reports/**/*.xml'
+            jacoco()
+        }
+        stage('Sonar Scanner Coverage') {
+            bat "./mvnw sonar:sonar -Dsonar.login=API_KEY -Dsonar.host.url=http://localhost:9000"
+        }
+        stage ('Publish to Nexus') {
+            nexusPublisher nexusInstanceId: 'INSTANCE_IN_JENKINS_SETTINGS', nexusRepositoryId: 'REPO_NAME', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: './target/gift-shop-api.war']],mavenCoordinate: [artifactId: 'gift-shop-mono', groupId: 'com.online', packaging: 'war', version: '1']]]
+        }
+        stage ('Deploy on this Server') {
+            deploy adapters: [tomcat9(credentialsId: 'TOMCAT_CREDENTIAL_IN_SETTINGS', path: '', url: 'http://localhost:8085')], contextPath: null, war: '**/*.war'
+        }
+    }
+    catch (e) {
+        def to = "ID_TO_SEND_EMAIL"
+        currentBuild.result = 'FAILURE'
+        def subject = "Jenkins - Build FAILURE"
+        def content = '${JELLY_SCRIPT,template="html"}'
+        emailext(body: content, mimeType: 'text/html',
+                replyTo: '$DEFAULT_REPLYTO', subject: subject,
+                to: to)
+    }
+}
