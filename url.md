@@ -4,3 +4,6 @@ https://linuxhint.com/installation-of-tomcat-ec2-amazon-linux/
 
 jacco
 https://youtu.be/5cH2--GHaOs?feature=shared
+
+nexus
+https://youtu.be/TRI-GfkCNeE?feature=shared
