@@ -15,3 +15,7 @@ https://youtu.be/TRI-GfkCNeE?feature=shared
 angular tomcat deployment
 ≈=========================
 https://youtu.be/xK5vp_cia8I?feature=shared
+
+promothous
+=================
+https://www.fosstechnix.com/how-to-install-prometheus-on-amazon-linux-2/
