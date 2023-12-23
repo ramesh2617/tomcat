@@ -19,3 +19,5 @@ https://youtu.be/xK5vp_cia8I?feature=shared
 promothous
 =================
 https://www.fosstechnix.com/how-to-install-prometheus-on-amazon-linux-2/
+
+https://medium.com/@inderjotsingh141/ultimate-ci-cd-using-aws-4d177ad79629
